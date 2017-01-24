@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -62,9 +63,8 @@ public abstract class Tool {
         
         for (FieldDesc<?> desc : fields) {
             if (desc instanceof LabelField) {
-                panel.add(new JLabel(desc.label), gbcField);
+                panel.add(desc.field, gbcField);
             } else {
-                desc.field = new JTextField(desc.columns);
                 panel.add(new JLabel(desc.label), gbcLabel);
                 panel.add(desc.field, gbcField);
             }
@@ -103,18 +103,19 @@ public abstract class Tool {
     
     protected static abstract class FieldDesc<T> {
         private final String label;
-        private final int columns;
-        protected JTextField field;
-        protected FieldDesc(String label, int columns) {
+        
+        protected JComponent field;
+        
+        protected FieldDesc(String label) {
             this.label = label;
-            this.columns = columns;
         }
         public abstract T value();
     }
     
     protected static class LabelField extends FieldDesc<Void> {
         public LabelField(String label) {
-            super(label, label.length());
+            super(label);
+            field = new JLabel(label);
         }
         @Override
         public Void value() {
@@ -123,32 +124,35 @@ public abstract class Tool {
     }
     
     protected static class StringField extends FieldDesc<String> {
-        public StringField(String label, int columns) {
-            super(label, columns);
+        public StringField(String label, String initial, int columns) {
+            super(label);
+            field = new JTextField(initial, columns);
         }
         @Override
         public String value() {
-            return field.getText();
+            return ((JTextField)field).getText();
         }
     }
     
     protected static class IntField extends FieldDesc<Integer> {
-        public IntField(String label, int columns) {
-            super(label, columns);
+        public IntField(String label, String initial, int columns) {
+            super(label);
+            field = new JTextField(initial, columns);
         }
         @Override
         public Integer value() throws NumberFormatException {
-            return Integer.decode(field.getText());
+            return Integer.decode(((JTextField)field).getText());
         }
     }
     
     protected static class DoubleField extends FieldDesc<Double> {
-        public DoubleField(String label, int columns) {
-            super(label, columns);
+        public DoubleField(String label, String initial, int columns) {
+            super(label);
+            field = new JTextField(initial, columns);
         }
         @Override
         public Double value() throws NumberFormatException {
-            return Double.valueOf(field.getText());
+            return Double.valueOf(((JTextField)field).getText());
         }
     }
     

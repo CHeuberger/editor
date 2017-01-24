@@ -21,8 +21,8 @@ public class SourceTool extends Tool {
             } else {
                 int x = (int) modelX;
                 int y = (int) modelY;
-                StringField nameField = new StringField("Name:", 20);
-                DoubleField voltageField = new DoubleField("Volt: ", 5);
+                StringField nameField = new StringField("Name:", "", 20);
+                DoubleField voltageField = new DoubleField("Volt: ", "0.0", 5);
 
                 if (!parameterDialog("Source (" + x + "," + y + ")", nameField, voltageField))
                     return;
