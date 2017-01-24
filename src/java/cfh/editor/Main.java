@@ -2,6 +2,8 @@ package cfh.editor;
 
 import static javax.swing.JOptionPane.*;
 
+import java.awt.Color;
+
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -39,9 +41,9 @@ public class Main {
     
     private void initGUI() {
         frame = new JFrame("Editor");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.add(new EditorPanel(world));
         
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(1400, 800);
         frame.validate();
         frame.setLocationRelativeTo(null);
