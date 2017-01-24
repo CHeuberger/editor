@@ -17,6 +17,7 @@ public class Source extends BoxElement {
             gg.clearRect(x(), y(), w(), h());
         }
         gg.drawRect(x(), y(), w(), h());
+        drawConnection(gg, x()+w(), y()+h()/2);
         
         if (w() > 5 && h() > 5) {
             gg.drawOval(x()+2, y()+2, w()-4, h()-4);

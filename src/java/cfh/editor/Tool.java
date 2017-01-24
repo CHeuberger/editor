@@ -16,7 +16,9 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -56,7 +58,7 @@ public abstract class Tool {
     private static final GridBagConstraints gbcField = new GridBagConstraints(RELATIVE, RELATIVE, REMAINDER, 1, 1.0, 0.0, BASELINE_LEADING, NONE, gbcInsets, 0, 0);
     
     // TODO own external class
-    public boolean parameterDialog(String title, FieldDesc<?>... fields) {
+    public boolean parameterDialog(int x, int y, String title, FieldDesc<?>... fields) {
         JPanel panel = new JPanel(new GridBagLayout());
         JLabel errorMessage = new JLabel();
         panel.add(errorMessage, gbcField);
@@ -71,7 +73,12 @@ public abstract class Tool {
         }
         
         while (true) {
-            int opt = showConfirmDialog(canvas, panel, title, OK_CANCEL_OPTION);
+            JOptionPane pane = new JOptionPane(panel, INFORMATION_MESSAGE, OK_CANCEL_OPTION);
+            JDialog dialog = pane.createDialog(canvas, title);
+            dialog.setLocation(x, y);
+            dialog.setVisible(true);
+            int opt = (Integer) (pane.getValue());
+//            int opt = showConfirmDialog(canvas, panel, title, OK_CANCEL_OPTION);
             if (opt != OK_OPTION)
                 return false;
 

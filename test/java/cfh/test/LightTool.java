@@ -7,10 +7,10 @@ import cfh.editor.Element;
 import cfh.editor.Tool;
 
 
-public class SourceTool extends Tool {
+public class LightTool extends Tool {
 
-    public SourceTool() {
-        super("source", "external source");
+    public LightTool() {
+        super("output", "light");
     }
     
     @Override
@@ -24,10 +24,10 @@ public class SourceTool extends Tool {
                 StringField nameField = new StringField("Name:", "", 20);
                 DoubleField voltageField = new DoubleField("Volt: ", "0.0", 5);
 
-                if (!parameterDialog(ev.getXOnScreen(), ev.getYOnScreen(), "Source (" + x + "," + y + ")", nameField, voltageField))
+                if (!parameterDialog(ev.getXOnScreen(), ev.getYOnScreen(), "Light (" + x + "," + y + ")", nameField, voltageField))
                     return;
                 
-                Source element = new Source();
+                Light element = new Light();
                 element.name(nameField.value());
                 element.voltage(voltageField.value());
                 element.x(x);

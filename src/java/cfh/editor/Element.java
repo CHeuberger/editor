@@ -3,6 +3,7 @@ package cfh.editor;
 import static java.util.Objects.*;
 
 import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
 
 
 public abstract class Element {
@@ -32,4 +33,9 @@ public abstract class Element {
     public abstract boolean over(double lx, double ly);
     
     public abstract Moveable moveable(double lx, double ly);
+    
+    
+    protected void drawConnection(Graphics2D gg, int x, int y) {
+        gg.fill(new Ellipse2D.Double(x-2.5, y-2.5, 5, 5));
+    }
 }

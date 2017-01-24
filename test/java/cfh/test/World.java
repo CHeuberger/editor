@@ -28,7 +28,8 @@ public class World implements cfh.editor.World {
     public List<Tool> tools() {
         return Arrays.asList(
                 new MoveTool(),
-                new SourceTool()
+                new SourceTool(),
+                new LightTool()
 //                new Tool("test", "1") { },
 //                new Tool("test", "2") { },
 //                new Tool("test", "sub", "3") { }

@@ -41,7 +41,9 @@ public class Compound extends BoxElement {
     
     public void paintContent(Graphics2D gg) {
         for (Element element : elements) {
-            element.paintElement(gg);
+            Graphics2D g2 = (Graphics2D) gg.create();
+            element.paintElement(g2);
+            g2.dispose();
         }
     }
 
