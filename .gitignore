@@ -1,0 +1,6 @@
+/.settings/
+/build/
+/logs/
+*.swp
+*~
+*.bak
