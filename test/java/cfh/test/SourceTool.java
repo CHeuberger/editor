@@ -3,7 +3,7 @@ package cfh.test;
 
 import java.awt.event.MouseEvent;
 
-import cfh.editor.MouseHandle;
+import cfh.editor.Element;
 import cfh.editor.Tool;
 
 
@@ -14,7 +14,7 @@ public class SourceTool extends Tool {
     }
     
     @Override
-    public void clicked(MouseEvent ev, double modelX, double modelY, MouseHandle over) {
+    public void clicked(MouseEvent ev, double modelX, double modelY, Element over) {
         if (isButton1(ev)) {
             if (ev.getClickCount() == 2 && over != null) {
                 // TODO

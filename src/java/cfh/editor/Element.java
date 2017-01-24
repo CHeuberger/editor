@@ -29,5 +29,7 @@ public abstract class Element {
     
     public abstract void paintElement(Graphics2D gg);
 
-    public abstract MouseHandle inside(double lx, double ly);
+    public abstract boolean over(double lx, double ly);
+    
+    public abstract Moveable moveable(double lx, double ly);
 }

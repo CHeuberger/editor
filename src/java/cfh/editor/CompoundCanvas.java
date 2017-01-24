@@ -107,12 +107,15 @@ public class CompoundCanvas extends Component {
             private void call(Tool.MouseFunction function, MouseEvent ev) {
                 double modelX = (ev.getX() - x) / zoom;
                 double modelY = (ev.getY() - y) / zoom;
-                MouseHandle over = null;
+                Element over = null;
                 List<Element> elements = compound.elements();
                 ListIterator<Element> iter = elements.listIterator(elements.size());
-                while (over == null && iter.hasPrevious()) {
+                while (iter.hasPrevious()) {
                     Element element = iter.previous();
-                    over = element.inside(modelX, modelY);
+                    if (element.over(modelX, modelY)) {
+                        over = element;
+                        break;
+                    }
                 }
                 function.call(ev, modelX, modelY, over);
             }

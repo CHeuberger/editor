@@ -92,10 +92,10 @@ public abstract class Tool {
 
     // TODO activate/deactivate = set cursor, ...
     
-    public void pressed(MouseEvent ev, double modelX, double modelY, MouseHandle over) { }
-    public void released(MouseEvent ev, double modelX, double modelY, MouseHandle over) { }
-    public void clicked(MouseEvent ev, double modelX, double modelY, MouseHandle over) { }
-    public void dragged(MouseEvent ev, double modelX, double modelY, MouseHandle over) { }
+    public void pressed(MouseEvent ev, double modelX, double modelY, Element over) { }
+    public void released(MouseEvent ev, double modelX, double modelY, Element over) { }
+    public void clicked(MouseEvent ev, double modelX, double modelY, Element over) { }
+    public void dragged(MouseEvent ev, double modelX, double modelY, Element over) { }
     
     
     ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -188,6 +188,6 @@ public abstract class Tool {
     
     
     public static interface MouseFunction{
-        public void call(MouseEvent ev, double modelX, double modelY, MouseHandle over);
+        public void call(MouseEvent ev, double modelX, double modelY, Element over);
     }
 }
